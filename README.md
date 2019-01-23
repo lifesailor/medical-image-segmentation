@@ -4,9 +4,19 @@ A project for medical image segmentation on lunar new year, 2019.
 
 <br/>
 
-## Image Segmentation
+## Semantic Image Segmentation
 
-<br/>
+- FCN
+- U-Net
+- SegNet
+- DeepLab
+- GCN
+
+
+
+
+
+
 
 ## Medical image segmentation?
 
