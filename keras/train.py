@@ -56,6 +56,7 @@ if __name__ == "__main__":
     logger.info("Set Parameter for train")
     num_classes = 3
     epochs = 100
+    batch_size = 64
 
     keras_path = os.path.join(base_path, 'keras')
     weight_path = os.path.join(keras_path, 'weight')
@@ -90,6 +91,7 @@ if __name__ == "__main__":
     history = model.fit(x=data.images,
                         y=data.masks,
                         epochs=epochs,
+                        batch_size=batch_size,
                         validation_split=0.2,
                         callbacks=[checkpoint, early_stopping, tensorboard],
                         verbose=2)
