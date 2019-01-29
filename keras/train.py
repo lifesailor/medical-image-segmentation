@@ -112,18 +112,3 @@ if __name__ == "__main__":
         os.makedirs(result_path)
 
     plt.savefig(os.path.join(result_path, model_name + '_dice_coef.png'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
