@@ -1,9 +1,11 @@
 """
 train.py
 
-1. load data
-2. define or load model
-3. train
+1. logger and parser
+2. load data
+3. define or load a model
+4. train
+5. save result
 """
 import os, sys
 import argparse
