@@ -9,20 +9,24 @@ import os, sys
 import argparse
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
-from utils.logger import logger
-from utils.parser import parse_args
-from data.dataset import Dataset
-from models.fcn import fcn_8s
-
 from keras.callbacks import ModelCheckpoint, EarlyStopping, TensorBoard
 from matplotlib import pyplot as plt
+
+from utils.logger import logger
+from utils.parser import parse_args
+
+from data.dataset import Dataset
+from models.fcn import fcn_8s
 
 
 if __name__ == "__main__":
 
     # define logger
     base_path = os.path.abspath('..')
-    logger = logger(name='train', path=os.path.join(base_path, 'log/train.log'))
+    log_path = os.path.join(base_path, 'log')
+    if not os.path.exists(log_path):
+        os.makedirs(log_path)
+    logger = logger(name='train', path=os.path.join(log_path, 'train.log'))
 
     # parse argument
     logger.info("Load Arguments")
@@ -53,7 +57,12 @@ if __name__ == "__main__":
 
     keras_path = os.path.join(base_path, 'keras')
     weight_path = os.path.join(keras_path, 'weight')
+    if not os.path.exists(weight_path):
+        os.makedirs(weight_path)
+
     graph_path = os.path.join(keras_path, 'graph')
+    if not os.path.exists(graph_path):
+        os.makedirs(graph_path)
 
     checkpoint = ModelCheckpoint(filepath=os.path.join(weight_path, model_name + '_model_weight.h5'),
                                  monitor='val_dice_coef',
@@ -72,12 +81,15 @@ if __name__ == "__main__":
                        lr_init=lr_init,
                        lr_decay=lr_decay,
                        vgg_weight_path=vgg_path)
+    else:
+        pass
 
     logger.info("Starts training")
     history = model.fit(x=data.images,
                         y=data.masks,
                         epochs=epochs,
                         validation_split=0.2,
+                        callbacks=[checkpoint, early_stopping, tensorboard]
                         verbose=2)
 
     logger.info("Print out result")
@@ -94,6 +106,9 @@ if __name__ == "__main__":
     plt.legend(loc="best")
 
     result_path = os.path.join(keras_path, 'result')
+    if not os.path.exists(result_path):
+        os.makedirs(result_path)
+
     plt.savefig(os.path.join(result_path, model_name + '_dice_coef.png'))
 
 
