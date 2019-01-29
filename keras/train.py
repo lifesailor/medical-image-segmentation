@@ -91,7 +91,7 @@ if __name__ == "__main__":
                         y=data.masks,
                         epochs=epochs,
                         validation_split=0.2,
-                        callbacks=[checkpoint, early_stopping, tensorboard]
+                        callbacks=[checkpoint, early_stopping, tensorboard],
                         verbose=2)
 
     logger.info("Print out result")
