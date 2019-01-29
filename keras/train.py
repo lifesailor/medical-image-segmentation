@@ -24,7 +24,7 @@ from models.fcn import fcn_8s
 if __name__ == "__main__":
 
     # define logger
-    base_path = os.path.abspath('..')
+    base_path = os.path.abspath('.')
     log_path = os.path.join(base_path, 'log')
     if not os.path.exists(log_path):
         os.makedirs(log_path)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     logger.info("Set Parameter for train")
     num_classes = 3
     epochs = 100
-    batch_size = 64
+    batch_size = 4
 
     keras_path = os.path.join(base_path, 'keras')
     weight_path = os.path.join(keras_path, 'weight')
