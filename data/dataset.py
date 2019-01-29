@@ -7,7 +7,7 @@ data.py
 import os
 import sys
 import glob
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 import numpy as np
 import cv2
@@ -22,7 +22,7 @@ class Dataset(object):
     def __init__(self, image_path=None, mask_path=None, image_size=None, logger=None):
         self._image_path = image_path
         self._mask_path = mask_path
-        self._image_size = image_size
+        self._image_size = image_size[:2]
         self._logger = logger
 
         self._images = list()
