@@ -94,21 +94,21 @@ if __name__ == "__main__":
                         callbacks=[checkpoint, early_stopping, tensorboard],
                         verbose=2)
 
-    logger.info("Print out result")
+    logger.info("save result")
+
+    result_path = os.path.join(keras_path, 'result')
+    if not os.path.exists(result_path):
+        os.makedirs(result_path)
+
     plt.title("loss")
     plt.plot(history.history["loss"], color="r", label="train")
     plt.plot(history.history["val_loss"], color="b", label="val")
     plt.legend(loc="best")
-    plt.savefig(model_name + '_loss.png')
+    plt.savefig(os.path.join(result_path, model_name + '_loss.png'))
 
     plt.gcf().clear()
     plt.title("dice_coef")
     plt.plot(history.history["dice_coef"], color="r", label="train")
     plt.plot(history.history["val_dice_coef"], color="b", label="val")
     plt.legend(loc="best")
-
-    result_path = os.path.join(keras_path, 'result')
-    if not os.path.exists(result_path):
-        os.makedirs(result_path)
-
     plt.savefig(os.path.join(result_path, model_name + '_dice_coef.png'))
