@@ -17,7 +17,8 @@ A project for medical image segmentation on lunar new year, 2019.
 ## 1-2. Dataset
 
 - [The Oxford-IIIT Pet Dataset](http://www.robots.ox.ac.uk/~vgg/data/pets/)
-  - [Preprocessed version by sualab](https://drive.google.com/file/d/1SD30E3Fj3216kHy_k71r5g_AG_uF1HRI/view)
+
+[Preprocessed Dataset by Sualab](https://drive.google.com/file/d/1SD30E3Fj3216kHy_k71r5g_AG_uF1HRI/view)
 
 <br/>
 
